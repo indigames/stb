@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.4.1)
 
+file(TO_CMAKE_PATH $ENV{IGE_LIBS} IGE_LIBS)
+
 set(TARGET_NAME stb)
 project(${TARGET_NAME})
 
@@ -16,7 +18,7 @@ if(DEFINED ANDROID_PLATFORM)
         add_compile_options(-march=atom -m64 -msse -msse2 -msse3 -mssse3 -msse4.1 -msse4.2 -mfpmath=sse)
     endif()
     if(CMAKE_BUILD_TYPE STREQUAL "Release")
-        add_compile_options(-Ofast)
+        add_compile_options(-g0 -Ofast)
     else(CMAKE_BUILD_TYPE STREQUAL "Debug")
         add_compile_options(-Og)
     endif()
